@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h1 class="display-4">왓챠!</h1>
+  <p class="lead">영화평점 서비스 :)</p>
+</div>
+
+<% @movies.each do |m|%>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="<%= m.poster %>" >
+  <div class="card-body">
+    <h5 class="card-title"><%= m.title%></h5>
+    <p class="card-text"><%= m.genre%></p>
+    <p class="card-text"><%= m.rate%></p>
+    <p class="card-text"><%= m.director%></p>
+    <a href="/movies/show/<%= m.id%>" class="btn btn-primary">평가하기</a>
+    <p><br></p>
+  </div>
+</div>
+<% end %>

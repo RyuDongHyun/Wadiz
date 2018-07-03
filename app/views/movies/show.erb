@@ -1,0 +1,28 @@
+<h1><%= @movie.title%></h1>
+<img src="<%= @movie.poster%>">
+<p><%= @movie.rate%></p>
+<p><%= @movie.genre%></p>
+<p><%= @movie.director%></p><br>
+
+<form action="/movies/<%= @movie.id%>/review">
+    <p>
+    <% (1..5).to_a.each do |x|%>
+        <input type="radio" name="score" value="<%= x%>"><%= x%>
+    <% end%>
+    </p>
+    리뷰 : <input name="comment" type="text">
+    <input type="submit" value="등록">
+</form>
+	<!--def mean(array)-->
+	<!--  array.inject(array.inject(0) { |sum, x| sum += x } / array.size.to_f-->
+	<!--end-->
+
+<% unless @sum==0%>
+    <p>평균평점 : <%= @avg%>점</p>
+<% else %>
+    <p>리뷰 없음</p>
+<% end%>
+<% @movie.reviews.reverse.each do |r|%>
+<p>리뷰 : <%= r.comment%></p>
+<p>평점 : <%= r.score%>점</p><br>
+<% end%>
